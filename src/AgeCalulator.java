@@ -11,14 +11,14 @@ public class AgeCalulator {
 	static int[] ages =new int [50] ;
 	static Date dob ;
 
-	public static void main(String[] args) throws ParseException  {
+	public static void main(String[] args)   {
 		
 	   ageCalcutor();
 	   printAge();
 		
 	}
 	
-	public static int ageCalcutor() throws ParseException {
+	public static int ageCalcutor()  {
 		
 		Scanner scn = new Scanner(System.in);
 		String hasNext = "Y";
@@ -33,7 +33,12 @@ public class AgeCalulator {
 			DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy"); 
 			
 			
-				dob = (Date)formatter.parse(entry);
+				try {
+					dob = (Date)formatter.parse(entry);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				 
 				ages[counter] = getAge(new Date(), dob);
 		    
