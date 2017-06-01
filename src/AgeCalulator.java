@@ -2,23 +2,26 @@
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class AgeCalulator {
 	
 	Date today= new Date();
-	static int[] ages =new int [50] ;
+	static ArrayList<Integer> ages =new ArrayList<Integer>();
 	static Date dob ;
 
 	public static void main(String[] args)   {
 		
-	   ageCalcutor();
-	   printAge();
+	  
+		ageCalculator();
+		printAge();
 		
 	}
 	
-	public static int ageCalcutor()  {
+	public static int ageCalculator()  {
 		
 		Scanner scn = new Scanner(System.in);
 		String hasNext = "Y";
@@ -36,11 +39,11 @@ public class AgeCalulator {
 				try {
 					dob = (Date)formatter.parse(entry);
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					
+					System.out.println("You entered a wrong format");
+					
 				}
-				 
-				ages[counter] = getAge(new Date(), dob);
+				ages.add(getAge(new Date(), dob));
 		    
 			
 			System.out.println("Would you like to enter details for another client?");
@@ -60,9 +63,9 @@ public class AgeCalulator {
 	
 	public static void printAge(){
 		
-		for(int i=0; i< ages.length; i++){
-		    	System.out.println(ages[i]);
-		    }
+			for(int age: ages){
+				System.out.println(age);
+			}
 		  
 	}
 
